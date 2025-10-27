@@ -1,4 +1,4 @@
-import { ContextIdFactory } from '@nestjs/core';
+import { ContextId, ContextIdFactory } from '@nestjs/core';
 
 export const ASYNC_CONTEXT_ATTRIBUTE = Symbol('ASYNC_CONTEXT_ATTRIBUTE');
 
@@ -6,7 +6,7 @@ export const ASYNC_CONTEXT_ATTRIBUTE = Symbol('ASYNC_CONTEXT_ATTRIBUTE');
  * Represents the context of an asynchronous operation.
  */
 export class AsyncContext {
-  public readonly id = ContextIdFactory.create();
+  constructor(public readonly id: ContextId = ContextIdFactory.create()) {}
 
   /**
    * Attaches the context to an object.
